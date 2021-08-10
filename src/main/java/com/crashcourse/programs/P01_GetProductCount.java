@@ -21,5 +21,7 @@ public class P01_GetProductCount
 
         // create object of spring container
         ctx = new AnnotationConfigApplicationContext(AppConfig1.class);
+
+        ctx.close();
     }
 }
