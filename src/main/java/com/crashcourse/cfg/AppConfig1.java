@@ -15,11 +15,13 @@ public class AppConfig1 {
 
   @Bean
   public DummyProductDao dummyDao() {
+    System.out.println("dummyDao() called............");
     return new DummyProductDao();
   }
 
   @Bean
   public JdbcProductDao jdbcDao() {
+    System.out.println("jdbcDao() called..............");
     return new JdbcProductDao();
   }
  }
