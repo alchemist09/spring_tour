@@ -22,6 +22,11 @@ public class P01_GetProductCount
         // create object of spring container
         ctx = new AnnotationConfigApplicationContext(AppConfig1.class);
 
+        dao = ctx.getBean("dummyDao", ProductDao.class);
+
+        System.out.println("dao is an instance of: " + dao.getClass().getName());
+        System.out.println("there are " + dao.count() + " products.");
+
         ctx.close();
     }
 }
