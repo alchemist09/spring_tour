@@ -23,7 +23,7 @@ public class P01_GetProductCount
         ctx = new AnnotationConfigApplicationContext(AppConfig1.class);
         System.out.println("=================================================");
 
-        dao = ctx.getBean("dummyDao", ProductDao.class);
+        dao = ctx.getBean("jdbcDao", ProductDao.class);
 
         System.out.println("dao is an instance of: " + dao.getClass().getName());
         System.out.println("there are " + dao.count() + " products.");
