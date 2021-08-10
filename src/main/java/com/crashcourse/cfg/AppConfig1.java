@@ -28,6 +28,7 @@ public class AppConfig1 {
 
   @Bean
   public OdbcDao odbcDao() {
+    System.out.println("odbcDao() called...............");
     return new OdbcDao();
   }
  }
