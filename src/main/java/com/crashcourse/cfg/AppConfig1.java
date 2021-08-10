@@ -2,6 +2,7 @@ package com.crashcourse.cfg;
 
 import com.crashcourse.dao.DummyProductDao;
 import com.crashcourse.dao.JdbcProductDao;
+import com.crashcourse.dao.OdbcDao;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,5 +24,10 @@ public class AppConfig1 {
   public JdbcProductDao jdbcDao() {
     System.out.println("jdbcDao() called..............");
     return new JdbcProductDao();
+  }
+
+  @Bean
+  public OdbcDao odbcDao() {
+    return new OdbcDao();
   }
  }
