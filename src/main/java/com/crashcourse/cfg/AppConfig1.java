@@ -8,6 +8,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfig1 {
+
+  public AppConfig1() {
+    System.out.println("\r\nAppConfig1 instantiated......");
+  }
+
   @Bean
   public DummyProductDao dummyDao() {
     return new DummyProductDao();
