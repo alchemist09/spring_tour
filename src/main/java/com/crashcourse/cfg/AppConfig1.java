@@ -21,6 +21,7 @@ public class AppConfig1 {
     return new DummyProductDao();
   }
 
+  @Scope("singleton")
   @Bean
   public JdbcProductDao jdbcDao() {
     System.out.println("jdbcDao() called..............");
