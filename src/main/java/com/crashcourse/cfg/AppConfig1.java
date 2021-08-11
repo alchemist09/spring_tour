@@ -6,6 +6,7 @@ import com.crashcourse.dao.OdbcDao;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
@@ -28,7 +29,7 @@ public class AppConfig1 {
     return new JdbcProductDao();
   }
 
-  @Scope("prototype")
+  @Lazy
   @Bean
   public OdbcDao odbcDao() {
     System.out.println("odbcDao() called...............");
