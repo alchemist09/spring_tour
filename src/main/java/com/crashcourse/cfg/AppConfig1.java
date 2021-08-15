@@ -16,7 +16,7 @@ public class AppConfig1 {
     System.out.println("\r\nAppConfig1 instantiated......");
   }
 
-  // @Bean
+  @Bean
   public DummyProductDao dummyDao() {
     System.out.println("dummyDao() called............");
     return new DummyProductDao();
