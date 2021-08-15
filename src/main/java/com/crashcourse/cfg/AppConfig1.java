@@ -19,7 +19,7 @@ public class AppConfig1 {
   private String driverClassname;
   @Value("${jdbc.url}")
   private String url;
-  @Value("jdbc.user")
+  @Value("${jdbc.user}")
   private String username;
   @Value("${jdbc.password}")
   private String password;
