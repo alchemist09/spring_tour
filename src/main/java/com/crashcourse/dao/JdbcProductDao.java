@@ -1,5 +1,12 @@
 package com.crashcourse.dao;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class JdbcProductDao implements ProductDao {
   private String driverClassName;
   private String url;
