@@ -27,7 +27,7 @@ public class AppConfig1 {
   public JdbcProductDao jdbcDao() {
     System.out.println("jdbcDao() called..............");
     JdbcProductDao dao = new JdbcProductDao();
-    dao.setDriverClassName("org.h2.driver");
+    dao.setDriverClassName("org.h2.Driver");
     dao.setUrl("jdbc:h2:tcp://localhost/~/spring_app_db");
     dao.setUsername("sa");
     dao.setPassword("");
