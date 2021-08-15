@@ -12,6 +12,11 @@ import org.springframework.context.annotation.Scope;
 @Configuration
 public class AppConfig1 {
 
+  private String driverClassname;
+  private String url;
+  private String username;
+  private String password;
+
   public AppConfig1() {
     System.out.println("\r\nAppConfig1 instantiated......");
   }
