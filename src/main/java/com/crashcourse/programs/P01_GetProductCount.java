@@ -25,11 +25,14 @@ public class P01_GetProductCount
 
         dao = ctx.getBean("odbcDao", ProductDao.class);
         ProductDao dao2 = ctx.getBean("odbcDao", ProductDao.class);
+        ProductDao dao3 = ctx.getBean("jdbcDao", ProductDao.class);
 
         System.out.println("dao2 == dao is " + (dao2 == dao));
 
         System.out.println("dao is an instance of: " + dao.getClass().getName());
         System.out.println("there are " + dao.count() + " products.");
+        System.out.println("********");
+        System.out.println("No. of products from database: " + dao3.count());
 
         ctx.close();
     }
