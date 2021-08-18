@@ -1,7 +1,9 @@
 package com.crashcourse.cfg;
 
+import com.crashcourse.dao.JdbcProductDao;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
@@ -17,5 +19,11 @@ public class AppConfig2 {
   private String username;
   @Value("${jdbc.password}")
   private String password;
+
+  @Bean
+  public JdbcProductDao jdbcDao() {
+    JdbcProductDao dao = new JdbcProductDao();
+    return dao;
+  }
   
  }
