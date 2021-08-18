@@ -27,6 +27,13 @@ public class AppConfig2 {
   @Bean
   public JdbcProductDao jdbcDao() {
     JdbcProductDao dao = new JdbcProductDao();
+    Connection ctn;
+    try {
+      ctn = connection();
+      dao.setConnection(ctn);
+    } catch (ClassNotFoundException | SQLException e) {
+      e.getMessage();
+    }
     return dao;
   }
 
