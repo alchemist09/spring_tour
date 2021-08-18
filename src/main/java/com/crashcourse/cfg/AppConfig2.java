@@ -1,5 +1,9 @@
 package com.crashcourse.cfg;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 import com.crashcourse.dao.JdbcProductDao;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +28,12 @@ public class AppConfig2 {
   public JdbcProductDao jdbcDao() {
     JdbcProductDao dao = new JdbcProductDao();
     return dao;
+  }
+
+  @Bean
+  public Connection connection() throws ClassNotFoundException, SQLException {
+    Class.forName(driverClassname);
+    return DriverManager.getConnection(url, username, password);
   }
   
  }
