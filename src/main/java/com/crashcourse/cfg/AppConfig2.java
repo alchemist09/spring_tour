@@ -26,9 +26,9 @@ public class AppConfig2 {
 
   @Bean
   public JdbcProductDao jdbcDao(Connection connection) {
-    JdbcProductDao dao = new JdbcProductDao();
-    dao.setConnection(connection);
-    return dao;
+    // JdbcProductDao dao = new JdbcProductDao();
+    // dao.setConnection(connection);
+    return new JdbcProductDao();
   }
 
   @Bean
