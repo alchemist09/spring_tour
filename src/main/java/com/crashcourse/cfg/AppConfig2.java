@@ -25,15 +25,9 @@ public class AppConfig2 {
   private String password;
 
   @Bean
-  public JdbcProductDao jdbcDao() {
+  public JdbcProductDao jdbcDao(Connection connection) {
     JdbcProductDao dao = new JdbcProductDao();
-    Connection ctn;
-    try {
-      ctn = connection();
-      dao.setConnection(ctn);
-    } catch (ClassNotFoundException | SQLException e) {
-      e.getMessage();
-    }
+    dao.setConnection(connection);
     return dao;
   }
 
