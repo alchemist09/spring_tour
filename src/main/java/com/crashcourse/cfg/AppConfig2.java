@@ -25,7 +25,7 @@ public class AppConfig2 {
   private String password;
 
   @Bean
-  public JdbcProductDao jdbcDao(Connection connection) {
+  public JdbcProductDao jdbcDao() {
     return new JdbcProductDao();
   }
 
