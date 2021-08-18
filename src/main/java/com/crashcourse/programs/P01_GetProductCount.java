@@ -28,13 +28,15 @@ public class P01_GetProductCount
         cntn = ctx.getBean("connection", JdbcConnection.class);
         // ProductDao dao2 = ctx.getBean("odbcDao", ProductDao.class);
         dao = ctx.getBean("jdbcDao", ProductDao.class);
+        ProductDao dao2 = ctx.getBean("jdbcDao", ProductDao.class);
 
-        // System.out.println("dao2 == dao is " + (dao2 == dao));
+        System.out.println("dao2 == dao is " + (dao2 == dao));
 
         System.out.println("cntn is an instance of: " + cntn.getClass().getName());
         // System.out.println("there are " + dao.count() + " products.");
         System.out.println("********");
         System.out.println("No. of products from database: " + dao.count());
+        System.out.println("No. of products from database: " + dao2.count());
 
         ctx.close();
     }
