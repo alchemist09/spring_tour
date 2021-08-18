@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
 @PropertySource("classpath:jdbc.properties")
@@ -24,11 +25,13 @@ public class AppConfig2 {
   @Value("${jdbc.password}")
   private String password;
 
+  @Scope("prototype")
   @Bean
   public JdbcProductDao jdbcDao() {
     return new JdbcProductDao();
   }
 
+  @Scope("prototype")
   @Bean
   public Connection connection() throws ClassNotFoundException, SQLException {
     Class.forName(driverClassname);
