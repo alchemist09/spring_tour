@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
 @PropertySource("classpath:jdbc.properties")
@@ -43,6 +44,11 @@ public class AppConfig4 {
   @Bean
   public JdbcProductDao jdbcDao() {
     return new JdbcProductDao();
+  }
+
+  @Bean
+  public JdbcTemplate jdbcTemplate(DataSource dataSource) {
+    return new JdbcTemplate(dataSource);
   }
  
  }
