@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Configuration("jdbcDao")
+@Repository("jdbcDao")
 @Getter
 @Setter
 @NoArgsConstructor
