@@ -23,10 +23,10 @@ public class JdbcProductDao implements ProductDao {
   private String username;
   private String password;
 
-  @Autowired
+  @Autowired(required = false)
   private Connection connection;
 
-  @Autowired
+  @Autowired(required = false)
   private DataSource dataSource;
 
   /**
