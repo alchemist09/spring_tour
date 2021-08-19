@@ -37,6 +37,7 @@ public class P01_GetProductCount
         System.out.println("********");
         System.out.println("No. of products from database: " + dao.count());
         System.out.println("No. of products from database: " + dao2.count());
+        System.out.println("No. of products from database: " + dao2.count());
 
         ctx.close();
     }
