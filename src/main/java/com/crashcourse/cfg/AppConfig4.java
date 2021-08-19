@@ -39,12 +39,7 @@ public class AppConfig4 {
     bds.setMinIdle(2);
     return bds;
   }
-
-  @Bean
-  public JdbcProductDao jdbcDao() {
-    return new JdbcProductDao();
-  }
-
+  
   @Bean
   public JdbcTemplate jdbcTemplate(DataSource dataSource) {
     return new JdbcTemplate(dataSource);
