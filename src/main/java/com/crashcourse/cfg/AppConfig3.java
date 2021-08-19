@@ -2,8 +2,6 @@ package com.crashcourse.cfg;
 
 import javax.sql.DataSource;
 
-import com.crashcourse.dao.JdbcProductDao;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
