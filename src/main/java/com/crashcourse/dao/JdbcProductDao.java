@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.activation.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.Getter;
@@ -23,6 +25,9 @@ public class JdbcProductDao implements ProductDao {
 
   @Autowired
   private Connection connection;
+
+  @Autowired
+  private DataSource dataSource;
 
   /**
    * Create a database connection
