@@ -30,6 +30,12 @@ public class AppConfig3 {
     bds.setUrl(url);
     bds.setUsername(username);
     bds.setPassword(password);
+
+    bds.setInitialSize(10);
+    bds.setMaxTotal(100);
+    bds.setMaxWaitMillis(500);
+    bds.setMaxIdle(50);
+    bds.setMinIdle(2);
     return bds;
   }
 
