@@ -15,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Component
+@Component("jdbcDao")
 @Getter
 @Setter
 @NoArgsConstructor
