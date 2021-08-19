@@ -26,6 +26,10 @@ public class AppConfig3 {
   @Bean
   public DataSource dataSource() {
     BasicDataSource bds = new BasicDataSource();
+    bds.setDriverClassName(driverClassname);
+    bds.setUrl(url);
+    bds.setUsername(username);
+    bds.setPassword(password);
     return bds;
   }
 
