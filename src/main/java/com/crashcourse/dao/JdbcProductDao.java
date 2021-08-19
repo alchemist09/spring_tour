@@ -34,6 +34,10 @@ public class JdbcProductDao implements ProductDao {
    * @return
    */
   private Connection createConnection() throws ClassNotFoundException, SQLException {
+    if(dataSource != null) {
+      return dataSource.getConnection();
+    }
+
     if(connection != null && connection.isClosed() == false) {
       return connection;
     }
