@@ -2,6 +2,8 @@ package com.crashcourse.cfg;
 
 import javax.sql.DataSource;
 
+import com.crashcourse.dao.JdbcProductDao;
+
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -37,6 +39,11 @@ public class AppConfig3 {
     bds.setMaxIdle(50);
     bds.setMinIdle(2);
     return bds;
+  }
+
+  @Bean
+  public JdbcProductDao jdbcDao() {
+    return new JdbcProductDao();
   }
  
  }
