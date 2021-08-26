@@ -13,7 +13,9 @@ public class P02_TestingJdbcTemplate {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class);
     template = ctx.getBean(JdbcTemplate.class);
 
-    addShipper();
+    // addShipper();
+
+    updateShipperDetails(4, "(315) 246-7799");
 
     ctx.close();
   }
