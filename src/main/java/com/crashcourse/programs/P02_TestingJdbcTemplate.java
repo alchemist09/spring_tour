@@ -11,6 +11,9 @@ public class P02_TestingJdbcTemplate {
 
   public static void main(String[] args) {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class);
+    template = ctx.getBean(JdbcTemplate.class);
+
+    addShipper();
 
     ctx.close();
   }
