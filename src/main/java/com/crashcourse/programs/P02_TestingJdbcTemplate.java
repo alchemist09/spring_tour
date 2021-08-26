@@ -32,6 +32,6 @@ public class P02_TestingJdbcTemplate {
   static void updateShipperDetails(int id, String phone) {
     String query = "update shippers set phone=? where shipper_id=?";
     template.update(query, phone, id);
-    System.out.print("Details of shipper updated!!!");
+    System.out.println("Details of shipper updated!!!");
   }
 }
