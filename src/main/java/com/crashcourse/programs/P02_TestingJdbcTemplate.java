@@ -26,4 +26,10 @@ public class P02_TestingJdbcTemplate {
     template.update(query, shipper_id, company_name, phone);
     System.out.println("New shipper added to database");
   }
+
+  static void updateShipperDetails(int id, String phone) {
+    String query = "update shippers set phone=? where shipper_id=?";
+    template.update(query, phone, id);
+    System.out.print("Details of shipper updated!!!");
+  }
 }
