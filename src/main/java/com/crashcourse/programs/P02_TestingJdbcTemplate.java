@@ -22,7 +22,8 @@ public class P02_TestingJdbcTemplate {
     // printProductCount();
     // printShipperName(4);
     // printProductDetails(3);
-    printAllShippers();
+    // printAllShippers();
+    printAllShipperNames();
 
     ctx.close();
   }
@@ -69,6 +70,13 @@ public class P02_TestingJdbcTemplate {
       System.out.println(shipper.get("company_name") + " ----> " + shipper.get("phone"));
       System.out.println("==============================\r\n");
     }
+  }
 
+  static void printAllShipperNames() {
+    String query = "select company_name from shippers";
+    List<String> shipper_names = template.queryForList(query, String.class);
+    for(String name : shipper_names) {
+      System.out.println(name);
+    }
   }
 }
