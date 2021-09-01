@@ -66,9 +66,7 @@ public class P02_TestingJdbcTemplate {
     String query = "select * from shippers";
     List<Map<String, Object>> result = template.queryForList(query);
     for(Map<String, Object> shipper : result) {
-      for(String key: shipper.keySet()) {
-        System.out.println(key + " ----> " + shipper.get(key));
-      }
+      System.out.println(shipper.get("company_name") + " ----> " + shipper.get("phone"));
       System.out.println("==============================\r\n");
     }
 
