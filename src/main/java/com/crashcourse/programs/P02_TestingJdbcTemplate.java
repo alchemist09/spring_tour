@@ -1,6 +1,7 @@
 package com.crashcourse.programs;
 
 import java.util.Map;
+import java.util.List;
 
 import com.crashcourse.cfg.AppConfig4;
 
@@ -20,7 +21,8 @@ public class P02_TestingJdbcTemplate {
     // updateShipperDetails(4, "(315) 246-7799");
     // printProductCount();
     // printShipperName(4);
-    printProductDetails(3);
+    // printProductDetails(3);
+    printAllShippers();
 
     ctx.close();
   }
@@ -58,5 +60,17 @@ public class P02_TestingJdbcTemplate {
     for(String key : result.keySet()) {
       System.out.println(key + " ---> " + result.get(key));
     }
+  }
+
+  static void printAllShippers() {
+    String query = "select * from shippers";
+    List<Map<String, Object>> result = template.queryForList(query);
+    for(Map<String, Object> shipper : result) {
+      for(String key: shipper.keySet()) {
+        System.out.println(key + " ----> " + shipper.get(key));
+      }
+      System.out.println("==============================\r\n");
+    }
+
   }
 }
