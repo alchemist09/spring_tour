@@ -1,5 +1,7 @@
 package com.crashcourse.programs;
 
+import java.util.Map;
+
 import com.crashcourse.cfg.AppConfig4;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -17,7 +19,8 @@ public class P02_TestingJdbcTemplate {
 
     // updateShipperDetails(4, "(315) 246-7799");
     // printProductCount();
-    printShipperName(4);
+    // printShipperName(4);
+    printProductDetails(3);
 
     ctx.close();
   }
@@ -47,5 +50,17 @@ public class P02_TestingJdbcTemplate {
     String query = "select company_name from shippers where shipper_id = ?";
     String shipperName = template.queryForObject(query, String.class, shipper_id);
     System.out.println("Shipper Name: " + shipperName);
+  }
+
+  static void printProductDetails(int product_id) {
+    String query = "select * from products where product_id = ?";
+    Map<String, Object> result = template.queryForMap(query, product_id);
+    String output = "";
+    for(Map.Entry<String, Object> entry : result.entrySet()) {
+      output += entry.getKey() + ": " + entry.getValue() + "\r\n";
+    }
+    System.out.println("PRODUCT DETAILS FOR PRODUCT_ID: " + product_id);
+    System.out.println("=============================================");
+    System.out.println(output);
   }
 }
