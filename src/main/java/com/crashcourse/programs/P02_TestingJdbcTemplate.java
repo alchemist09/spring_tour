@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.List;
 
 import com.crashcourse.cfg.AppConfig4;
+import com.crashcourse.entity.Category;
+import com.crashcourse.entity.CategoryMapper;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,7 +25,8 @@ public class P02_TestingJdbcTemplate {
     // printShipperName(4);
     // printProductDetails(3);
     // printAllShippers();
-    printAllShipperNames();
+    // printAllShipperNames();
+    printAllCategories();
 
     ctx.close();
   }
@@ -77,6 +80,14 @@ public class P02_TestingJdbcTemplate {
     List<String> shipper_names = template.queryForList(query, String.class);
     for(String name : shipper_names) {
       System.out.println(name);
+    }
+  }
+
+  static void printAllCategories() {
+    String query = "select * from categories";
+    List<Category> cg_list = template.query(query, new CategoryMapper());
+    for(Category cg : cg_list) {
+      System.out.println(cg.getCategory_name() + "    " + cg.getDescription() + "    " + cg.getPictture());
     }
   }
 }
