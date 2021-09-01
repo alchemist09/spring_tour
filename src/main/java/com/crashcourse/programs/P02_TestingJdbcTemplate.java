@@ -16,7 +16,8 @@ public class P02_TestingJdbcTemplate {
     // addShipper();
 
     // updateShipperDetails(4, "(315) 246-7799");
-    printProductCount();
+    // printProductCount();
+    printShipperName(4);
 
     ctx.close();
   }
@@ -40,5 +41,11 @@ public class P02_TestingJdbcTemplate {
     String query = "select count(*) from products";
     Integer productCount = template.queryForObject(query, Integer.class);
     System.out.println("There are " + productCount + " products");
+  }
+
+  static void printShipperName(int shipper_id) {
+    String query = "select company_name from shippers where shipper_id = ?";
+    String shipperName = template.queryForObject(query, String.class, shipper_id);
+    System.out.println("Shipper Name: " + shipperName);
   }
 }
