@@ -26,7 +26,8 @@ public class P02_TestingJdbcTemplate {
     // printProductDetails(3);
     // printAllShippers();
     // printAllShipperNames();
-    printAllCategories();
+    // printAllCategories();
+    getCategory(3);
 
     ctx.close();
   }
@@ -89,5 +90,12 @@ public class P02_TestingJdbcTemplate {
     for(Category cg : cg_list) {
       System.out.println(cg.getCategory_name() + "    " + cg.getDescription() + "    " + cg.getPictture());
     }
+  }
+
+  static void getCategory(int category_id) {
+    String query = "select * from categories where category_id = ?";
+    Category c = template.queryForObject(query, new CategoryMapper(), category_id);
+    System.out.println(c.getCategory_name());
+    System.out.println(c.getDescription());
   }
 }
