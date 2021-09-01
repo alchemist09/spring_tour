@@ -55,12 +55,8 @@ public class P02_TestingJdbcTemplate {
   static void printProductDetails(int product_id) {
     String query = "select * from products where product_id = ?";
     Map<String, Object> result = template.queryForMap(query, product_id);
-    String output = "";
-    for(Map.Entry<String, Object> entry : result.entrySet()) {
-      output += entry.getKey() + ": " + entry.getValue() + "\r\n";
+    for(String key : result.keySet()) {
+      System.out.println(key + " ---> " + result.get(key));
     }
-    System.out.println("PRODUCT DETAILS FOR PRODUCT_ID: " + product_id);
-    System.out.println("=============================================");
-    System.out.println(output);
   }
 }
