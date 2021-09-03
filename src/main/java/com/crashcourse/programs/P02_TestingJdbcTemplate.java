@@ -93,7 +93,7 @@ public class P02_TestingJdbcTemplate {
   }
 
   static void getCategory(int category_id) {
-    String query = "select * from categories where category_id = ?";
+    String query = "SELECT * FROM categories WHERE category_id = ?";
     Category c = template.queryForObject(query, new CategoryMapper(), category_id);
     System.out.println(c.getCategory_name());
     System.out.println(c.getDescription());
