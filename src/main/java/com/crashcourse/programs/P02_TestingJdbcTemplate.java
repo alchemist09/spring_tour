@@ -1,6 +1,11 @@
 package com.crashcourse.programs;
 
 import java.util.Map;
+
+import com.crashcourse.entity.Region;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.crashcourse.cfg.AppConfig4;
@@ -9,6 +14,7 @@ import com.crashcourse.entity.CategoryMapper;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 public class P02_TestingJdbcTemplate {
 
@@ -97,5 +103,16 @@ public class P02_TestingJdbcTemplate {
     Category c = template.queryForObject(query, new CategoryMapper(), category_id);
     System.out.println(c.getCategory_name());
     System.out.println(c.getDescription());
+  }
+
+  static void printAllRegions() {
+    RowMapper rm = new RowMapper<Region>() {
+      public Region mapRow(ResultSet rs, int rowNum) throws SQLException {
+        Region rg = new Region();
+        rg.setRegion_id(rs.getInt("region_id"));
+        rg.setRegion_description(rs.getString("region_description"));
+        return rg;
+      }
+    };
   }
 }
