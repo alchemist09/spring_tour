@@ -33,7 +33,8 @@ public class P02_TestingJdbcTemplate {
     // printAllShippers();
     // printAllShipperNames();
     // printAllCategories();
-    getCategory(3);
+    // getCategory(3);
+    printAllRegions();
 
     ctx.close();
   }
@@ -118,7 +119,7 @@ public class P02_TestingJdbcTemplate {
     String query = "SELECT * FROM regions";
     List<Region> region_list = template.query(query, rm);
     for(Region region : region_list) {
-      System.out.println(region);
+      System.out.println(region.getRegion_description());
     }
   }
 }
