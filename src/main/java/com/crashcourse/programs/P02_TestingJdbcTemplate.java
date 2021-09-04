@@ -106,7 +106,7 @@ public class P02_TestingJdbcTemplate {
   }
 
   static void printAllRegions() {
-    RowMapper rm = new RowMapper<Region>() {
+    RowMapper<Region> rm = new RowMapper<Region>() {
       public Region mapRow(ResultSet rs, int rowNum) throws SQLException {
         Region rg = new Region();
         rg.setRegion_id(rs.getInt("region_id"));
@@ -114,5 +114,11 @@ public class P02_TestingJdbcTemplate {
         return rg;
       }
     };
+
+    String query = "SELECT * FROM regions";
+    List<Region> region_list = template.query(query, rm);
+    for(Region region : region_list) {
+      System.out.println(region);
+    }
   }
 }
