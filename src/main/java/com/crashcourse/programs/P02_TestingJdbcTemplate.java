@@ -49,25 +49,25 @@ public class P02_TestingJdbcTemplate {
   }
 
   static void updateShipperDetails(int id, String phone) {
-    String query = "update shippers set phone=? where shipper_id=?";
+    String query = "UPDATE shippers SET phone=? WHERE shipper_id=?";
     template.update(query, phone, id);
     System.out.println("Details of shipper updated!!!");
   }
 
   static void printProductCount() {
-    String query = "select count(*) from products";
+    String query = "SELECT COUNT(*) FROM products";
     Integer productCount = template.queryForObject(query, Integer.class);
     System.out.println("There are " + productCount + " products");
   }
 
   static void printShipperName(int shipper_id) {
-    String query = "select company_name from shippers where shipper_id = ?";
+    String query = "SELECT company_name FROM shippers WHERE shipper_id = ?";
     String shipperName = template.queryForObject(query, String.class, shipper_id);
     System.out.println("Shipper Name: " + shipperName);
   }
 
   static void printProductDetails(int product_id) {
-    String query = "select * from products where product_id = ?";
+    String query = "SELECT * FROM products WHERE product_id = ?";
     Map<String, Object> result = template.queryForMap(query, product_id);
     for(String key : result.keySet()) {
       System.out.println(key + " ---> " + result.get(key));
@@ -75,7 +75,7 @@ public class P02_TestingJdbcTemplate {
   }
 
   static void printAllShippers() {
-    String query = "select * from shippers";
+    String query = "SELECT * FROM shippers";
     List<Map<String, Object>> result = template.queryForList(query);
     for(Map<String, Object> shipper : result) {
       System.out.println(shipper.get("company_name") + " ----> " + shipper.get("phone"));
@@ -84,7 +84,7 @@ public class P02_TestingJdbcTemplate {
   }
 
   static void printAllShipperNames() {
-    String query = "select company_name from shippers";
+    String query = "SELECT company_name FROM shippers";
     List<String> shipper_names = template.queryForList(query, String.class);
     for(String name : shipper_names) {
       System.out.println(name);
@@ -92,7 +92,7 @@ public class P02_TestingJdbcTemplate {
   }
 
   static void printAllCategories() {
-    String query = "select * from categories";
+    String query = "SELECT * FROM categories";
     List<Category> cg_list = template.query(query, new CategoryMapper());
     for(Category cg : cg_list) {
       System.out.println(cg.getCategory_name() + "    " + cg.getDescription() + "    " + cg.getPictture());
