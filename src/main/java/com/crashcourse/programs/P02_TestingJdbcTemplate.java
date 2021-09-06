@@ -21,14 +21,12 @@ import org.springframework.jdbc.core.RowMapper;
 public class P02_TestingJdbcTemplate {
 
   static JdbcTemplate template;
-  static RowMapper<Region> rm = new RowMapper<Region>() {
-    public Region mapRow(ResultSet rs, int rowNum) throws SQLException {
+  static RowMapper<Region> rm = (ResultSet rs, int rowNum) -> {
       Region rg = new Region();
       rg.setRegion_id(rs.getInt("region_id"));
       rg.setRegion_description(rs.getString("region_description"));
       return rg;
-    }
-  };
+    };
 
   public static void main(String[] args) {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class);
