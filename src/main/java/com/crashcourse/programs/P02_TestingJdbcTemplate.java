@@ -3,6 +3,7 @@ package com.crashcourse.programs;
 import java.util.Map;
 
 import com.crashcourse.entity.Region;
+import com.crashcourse.entity.Customer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +12,7 @@ import java.util.List;
 import com.crashcourse.cfg.AppConfig4;
 import com.crashcourse.entity.Category;
 import com.crashcourse.entity.CategoryMapper;
+import com.crashcourse.entity.CustomerMapper;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -34,7 +36,8 @@ public class P02_TestingJdbcTemplate {
     // printAllShipperNames();
     // printAllCategories();
     // getCategory(3);
-    printAllRegions();
+    // printAllRegions();
+    printCustomersFromCountries("France");
 
     ctx.close();
   }
@@ -120,6 +123,20 @@ public class P02_TestingJdbcTemplate {
     List<Region> region_list = template.query(query, rm);
     for(Region region : region_list) {
       System.out.println(region.getRegion_description());
+    }
+  }
+
+  static void printCustomersFromCountries(String c1) {
+    String query = "SELECT * FROM customers";
+    List<Customer> customers = template.query(query, new CustomerMapper());
+    for(Customer c : customers) {
+      System.out.println(c.getContact_name());
+      System.out.println(c.getContact_title());
+      System.out.println(c.getAddress());
+      System.out.println(c.getCity());
+      System.out.println(c.getCountry());
+      System.out.println(c.getPhone());
+      System.out.println("====================================\r\n");
     }
   }
 }
