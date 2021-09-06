@@ -37,7 +37,7 @@ public class P02_TestingJdbcTemplate {
     // printAllCategories();
     // getCategory(3);
     // printAllRegions();
-    printCustomersFromCountries("France");
+    printCustomersFromCountries("France", "Germany", "Brazil", 5);
 
     ctx.close();
   }
@@ -126,9 +126,9 @@ public class P02_TestingJdbcTemplate {
     }
   }
 
-  static void printCustomersFromCountries(String c1) {
-    String query = "SELECT * FROM customers";
-    List<Customer> customers = template.query(query, new CustomerMapper());
+  static void printCustomersFromCountries(String c1, String c2, String c3, int qty) {
+    String query = "SELECT * FROM customers WHERE country IN (?, ?, ?) LIMIT ?";
+    List<Customer> customers = template.query(query, new CustomerMapper(), c1, c2, c3, qty);
     for(Customer c : customers) {
       System.out.println(c.getContact_name());
       System.out.println(c.getContact_title());
