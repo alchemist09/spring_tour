@@ -5,8 +5,6 @@ import java.util.Map;
 import com.crashcourse.entity.Region;
 import com.crashcourse.entity.Customer;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import com.crashcourse.cfg.AppConfig4;
