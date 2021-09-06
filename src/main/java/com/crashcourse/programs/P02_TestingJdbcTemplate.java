@@ -21,7 +21,7 @@ import org.springframework.jdbc.core.RowMapper;
 public class P02_TestingJdbcTemplate {
 
   static JdbcTemplate template;
-  static RowMapper<Region> rm = (ResultSet rs, int rowNum) -> {
+  static RowMapper<Region> rm = (rs, owNum) -> {
       Region rg = new Region();
       rg.setRegion_id(rs.getInt("region_id"));
       rg.setRegion_description(rs.getString("region_description"));
