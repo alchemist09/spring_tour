@@ -23,7 +23,9 @@ public interface ProductDao {
   }
 
   //  QUERIES
-  public long count();
+  public default long count() throws DaoException {
+    throw new DaoException("Method not implemented");
+  }
 
   public default List<Product> getAllProducts() throws DaoException {
     throw new DaoException("Method not implemented");
