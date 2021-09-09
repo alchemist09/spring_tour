@@ -1,6 +1,7 @@
 package com.crashcourse.programs;
 
 import com.crashcourse.cfg.AppConfig3;
+import com.crashcourse.dao.DaoException;
 import com.crashcourse.dao.ProductDao;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,7 +12,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
 public class P01_GetProductCount 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws DaoException
     {
         // declare our dependency
         ProductDao dao;
