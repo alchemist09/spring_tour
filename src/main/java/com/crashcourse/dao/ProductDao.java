@@ -1,5 +1,7 @@
 package com.crashcourse.dao;
 
+import java.util.List;
+
 import com.crashcourse.entity.Product;
 
 public interface ProductDao {
@@ -11,4 +13,10 @@ public interface ProductDao {
 
   //  QUERIES
   public long count();
+  public List<Product> getAllProducts() throws DaoException;
+  public List<Product> getProductsByPriceRange(Double min_price, Double max_price) throws DaoException;
+  public List<Product> getProductsInCategory(Integer category_id) throws DaoException;
+  public List<Product> getProductsNotInStock() throws DaoException;
+  public List<Product> getProductsOnOrder() throws DaoException;
+  public List<Product> getDiscontinuedProducts() throws DaoException;
 }
