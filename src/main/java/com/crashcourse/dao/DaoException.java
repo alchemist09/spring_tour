@@ -1,13 +1,16 @@
 package com.crashcourse.dao;
 
 public class DaoException extends Exception {
-  private String message;
+
+  public DaoException() {
+    super();
+  }
 
   public DaoException(String msg) {
-    message = msg;
+    super(msg);
   }
-  
-  public String getMessage() {
-    return message;
+
+  public DaoException(Throwable cause) {
+    super(cause);
   }
 }
