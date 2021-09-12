@@ -87,6 +87,7 @@ public class JdbcTemplateProductDao implements ProductDao {
   }
 
   public List<Product> getDiscontinuedProducts() throws DaoException {
-    return ProductDao.super.getDiscontinuedProducts();
+    String sql = "SELECT * FROM products WHERE discontinued = 1";
+    return template.query(sql, productMapper);
   }
 }
