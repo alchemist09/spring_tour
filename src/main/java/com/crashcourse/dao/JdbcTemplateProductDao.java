@@ -51,7 +51,9 @@ public class JdbcTemplateProductDao implements ProductDao {
   }
 
   public void deleteProduct(Integer product_id) throws DaoException {
-    ProductDao.super.deleteProduct(product_id);
+    // DO A SOFT DELETE
+    String sql = "UPDATE products SET discontinued = 1 WHERE product_id = ?";
+    template.update(sql, product_id);
   }
 
   //  QUERIES
