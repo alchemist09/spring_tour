@@ -4,10 +4,16 @@ import java.util.List;
 
 import com.crashcourse.entity.Product;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository("jtDao")
 public class JdbcTemplateProductDao implements ProductDao {
+
+  @Autowired(required = false)
+  private JdbcTemplate template;
+
   // CRUD OPERATIONS
   @Override
   public void addProduct(Product product) throws DaoException {
