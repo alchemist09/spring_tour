@@ -58,7 +58,8 @@ public class JdbcTemplateProductDao implements ProductDao {
 
   //  QUERIES
   public long count() throws DaoException {
-    return ProductDao.super.count();
+    String sql = "SELECT COUNT(*) FROM products";
+    return template.queryForObject(sql, Long.class);
   }
 
   public List<Product> getAllProducts() throws DaoException {
