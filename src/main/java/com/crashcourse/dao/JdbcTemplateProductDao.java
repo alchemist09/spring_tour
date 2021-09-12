@@ -22,8 +22,10 @@ public class JdbcTemplateProductDao implements ProductDao {
                          p.getUnits_in_stock(), p.getUnits_on_order(), p.getReorder_level(), p.getDiscontinued());
   }
 
-  public void updateProduct(Product product) throws DaoException {
-    ProductDao.super.updateProduct(product);
+  public void updateProduct(Product p) throws DaoException {
+    String sql = "UPDATE products SET product_name=?, supplier_id=?, category_id=?, quantity_per_unit=?, unit_price=?, units_in_stock=?, units_on_order=?, reorder_level=?, discontinued=? WHERE product_id=?";
+    template.update(sql, p.getProduct_name(), p.getSupplier_id(), p.getCategory_id(), p.getQuantity_per_unit(), p.getUnit_price(), 
+    p.getUnits_in_stock(), p.getUnits_on_order(), p.getReorder_level(), p.getDiscontinued(), p.getProduct_id());
   }
 
   public Product getProduct(Integer product_id) throws DaoException {
