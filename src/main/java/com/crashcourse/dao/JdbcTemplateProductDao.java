@@ -77,7 +77,8 @@ public class JdbcTemplateProductDao implements ProductDao {
   }
 
   public List<Product> getProductsNotInStock() throws DaoException {
-    return ProductDao.super.getProductsNotInStock();
+    String sql = "SELECT * FROM products WHERE unit_in_stock = 0";
+    return template.query(sql, productMapper);
   }
 
   public List<Product> getProductsOnOrder() throws DaoException {
