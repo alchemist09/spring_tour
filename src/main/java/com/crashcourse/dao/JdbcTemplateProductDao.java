@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.crashcourse.entity.Product;
 
+import org.springframework.stereotype.Repository;
+
+@Repository("jtDao")
 public class JdbcTemplateProductDao implements ProductDao {
   // CRUD OPERATIONS
   @Override
