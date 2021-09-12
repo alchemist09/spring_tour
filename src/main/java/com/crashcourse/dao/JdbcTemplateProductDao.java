@@ -67,7 +67,8 @@ public class JdbcTemplateProductDao implements ProductDao {
   }
 
   public List<Product> getProductsByPriceRange(Double min_price, Double max_price) throws DaoException {
-    return ProductDao.super.getProductsByPriceRange(min_price, max_price);
+    String sql = "SELECT * FROM products WHERE unit_price BETWEEN ? AND ?";
+    return template.query(sql, productMapper, min_price, max_price);
   }
 
   public List<Product> getProductsInCategory(Integer category_id) throws DaoException {
