@@ -38,18 +38,21 @@ public class JdbcTemplateProductDao implements ProductDao {
                          p.getUnits_in_stock(), p.getUnits_on_order(), p.getReorder_level(), p.getDiscontinued());
   }
 
+  @Override
   public void updateProduct(Product p) throws DaoException {
     String sql = "UPDATE products SET product_name=?, supplier_id=?, category_id=?, quantity_per_unit=?, unit_price=?, units_in_stock=?, units_on_order=?, reorder_level=?, discontinued=? WHERE product_id=?";
     template.update(sql, p.getProduct_name(), p.getSupplier_id(), p.getCategory_id(), p.getQuantity_per_unit(), p.getUnit_price(), 
     p.getUnits_in_stock(), p.getUnits_on_order(), p.getReorder_level(), p.getDiscontinued(), p.getProduct_id());
   }
 
+  @Override
   public Product getProduct(Integer prod_id) throws DaoException {
     String sql = "SELECT * FROM products WHERE product_id = ?";
     Product product = template.queryForObject(sql,  productMapper, prod_id);
     return product;
   }
 
+  @Override
   public void deleteProduct(Integer product_id) throws DaoException {
     // DO A SOFT DELETE
     String sql = "UPDATE products SET discontinued = 1 WHERE product_id = ?";
@@ -57,36 +60,43 @@ public class JdbcTemplateProductDao implements ProductDao {
   }
 
   //  QUERIES
+  @Override
   public long count() throws DaoException {
     String sql = "SELECT COUNT(*) FROM products";
     return template.queryForObject(sql, Long.class);
   }
 
+  @Override
   public List<Product> getAllProducts() throws DaoException {
     String sql = "SELECT * FROM products";
     return template.query(sql, productMapper);
   }
 
+  @Override
   public List<Product> getProductsByPriceRange(Double min_price, Double max_price) throws DaoException {
     String sql = "SELECT * FROM products WHERE unit_price BETWEEN ? AND ?";
     return template.query(sql, productMapper, min_price, max_price);
   }
 
+  @Override
   public List<Product> getProductsInCategory(Integer category_id) throws DaoException {
     String sql = "SELECT * FROM products WHERE category_id = ?";
     return template.query(sql, productMapper, category_id);
   }
 
+  @Override
   public List<Product> getProductsNotInStock() throws DaoException {
     String sql = "SELECT * FROM products WHERE units_in_stock = 0";
     return template.query(sql, productMapper);
   }
 
+  @Override
   public List<Product> getProductsOnOrder() throws DaoException {
     String sql = "SELECT * FROM products WHERE units_on_order > 0";
     return template.query(sql, productMapper);
   }
 
+  @Override
   public List<Product> getDiscontinuedProducts() throws DaoException {
     String sql = "SELECT * FROM products WHERE discontinued = 1";
     return template.query(sql, productMapper);
