@@ -45,7 +45,7 @@ public class JdbcTemplateProductDao implements ProductDao {
   }
 
   public Product getProduct(Integer prod_id) throws DaoException {
-    String sql = "SELECT * FROM product WHERE product_id = ?";
+    String sql = "SELECT * FROM products WHERE product_id = ?";
     Product product = template.queryForObject(sql,  productMapper, prod_id);
     return product;
   }
