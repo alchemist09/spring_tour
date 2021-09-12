@@ -6,6 +6,7 @@ import com.crashcourse.entity.Product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository("jtDao")
@@ -13,6 +14,21 @@ public class JdbcTemplateProductDao implements ProductDao {
 
   @Autowired(required = false)
   private JdbcTemplate template;
+
+  RowMapper<Product> productMapper = (rs, rowNum) -> {
+    Product p = new Product();
+    p.setProduct_id(rs.getInt("product_id"));
+    p.setProduct_name(rs.getString("product_name"));
+    p.setSupplier_id(rs.getInt("supplier_id"));
+    p.setCategory_id(rs.getInt("category_id"));
+    p.setQuantity_per_unit(rs.getString("quantity_per_unit"));
+    p.setUnit_price(rs.getDouble("unit_price"));
+    p.setUnits_in_stock(rs.getInt("units_in_stock"));
+    p.setUnits_on_order(rs.getInt("units_on_order"));
+    p.setReorder_level(rs.getInt("reorder_level"));
+    p.setDiscontinued(rs.getInt("discontinued"));
+    return p;
+  };
 
   // CRUD OPERATIONS
   @Override
@@ -30,7 +46,7 @@ public class JdbcTemplateProductDao implements ProductDao {
 
   public Product getProduct(Integer prod_id) throws DaoException {
     String sql = "SELECT * FROM product WHERE product_id = ?";
-    Product product = template.queryForObject(sql, rowMapper, prod_id);
+    Product product = template.queryForObject(sql,  productMapper, prod_id);
     return product;
   }
 
