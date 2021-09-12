@@ -16,6 +16,9 @@ public class P03_TestingJdbcTemplateProductDao {
     Product p1 = dao.getProduct(1);
     System.out.println(p1);
     
+    p1.setUnit_price(p1.getUnit_price() + 1);
+    dao.updateProduct(p1);
+    System.out.println("Product Updated!!");
     ctx.close();
   }
 }
