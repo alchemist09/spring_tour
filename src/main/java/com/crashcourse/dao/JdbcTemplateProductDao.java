@@ -72,7 +72,8 @@ public class JdbcTemplateProductDao implements ProductDao {
   }
 
   public List<Product> getProductsInCategory(Integer category_id) throws DaoException {
-    return ProductDao.super.getProductsInCategory(category_id);
+    String sql = "SELECT * FROM products WHERE category_id = ?";
+    return template.query(sql, productMapper, category_id);
   }
 
   public List<Product> getProductsNotInStock() throws DaoException {
