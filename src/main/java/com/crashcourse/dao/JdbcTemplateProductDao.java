@@ -16,8 +16,10 @@ public class JdbcTemplateProductDao implements ProductDao {
 
   // CRUD OPERATIONS
   @Override
-  public void addProduct(Product product) throws DaoException {
-    ProductDao.super.addProduct(product);
+  public void addProduct(Product p) throws DaoException {
+    String sql = "INSERT INTO products VALUES (?, ?, ?. ?, ?, ?, ?, ?, ?, ?)";
+    template.update(sql, p.getProduct_id(), p.getProduct_name(), p.getSupplier_id(), p.getCategory_id(), p.getQuantity_per_unit(), p.getUnit_price(), 
+                         p.getUnits_in_stock(), p.getUnits_on_order(), p.getReorder_level(), p.getDiscontinued());
   }
 
   public void updateProduct(Product product) throws DaoException {
