@@ -28,8 +28,10 @@ public class JdbcTemplateProductDao implements ProductDao {
     p.getUnits_in_stock(), p.getUnits_on_order(), p.getReorder_level(), p.getDiscontinued(), p.getProduct_id());
   }
 
-  public Product getProduct(Integer product_id) throws DaoException {
-    return ProductDao.super.getProduct(product_id);
+  public Product getProduct(Integer prod_id) throws DaoException {
+    String sql = "SELECT * FROM product WHERE product_id = ?";
+    Product product = template.queryForObject(sql, rowMapper, prod_id);
+    return product;
   }
 
   public void deleteProduct(Integer product_id) throws DaoException {
