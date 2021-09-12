@@ -31,6 +31,9 @@ public class P03_TestingJdbcTemplateProductDao {
     List<Product> out_of_stock_products = dao.getProductsNotInStock();
     System.out.println("There are " + out_of_stock_products.size() + " products that are out of stock");
 
+    List<Product> ordered_products = dao.getProductsOnOrder();
+    System.out.println("The number of products that are on order is " + ordered_products.size());
+
     ctx.close();
   }
 }
