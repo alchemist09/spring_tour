@@ -62,7 +62,8 @@ public class JdbcTemplateProductDao implements ProductDao {
   }
 
   public List<Product> getAllProducts() throws DaoException {
-    return ProductDao.super.getAllProducts();
+    String sql = "SELECT * FROM products";
+    return template.query(sql, productMapper);
   }
 
   public List<Product> getProductsByPriceRange(Double min_price, Double max_price) throws DaoException {
