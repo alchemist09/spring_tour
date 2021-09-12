@@ -28,6 +28,9 @@ public class P03_TestingJdbcTemplateProductDao {
     List<Product> discontinued_prodcuts = dao.getDiscontinuedProducts();
     System.out.println("There are " + discontinued_prodcuts.size() + " discontinued products");
 
+    List<Product> out_of_stock_products = dao.getProductsNotInStock();
+    System.out.println("There are " + out_of_stock_products.size() + " products that are out of stock");
+
     ctx.close();
   }
 }
