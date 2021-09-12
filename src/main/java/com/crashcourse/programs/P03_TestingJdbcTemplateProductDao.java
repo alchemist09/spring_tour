@@ -25,6 +25,9 @@ public class P03_TestingJdbcTemplateProductDao {
     List<Product> products = dao.getProductsByPriceRange(50.0, 200.0);
     System.out.println("There are " + products.size() + " products between $50.0 and $200.0");
 
+    List<Product> discontinued_prodcuts = dao.getDiscontinuedProducts();
+    System.out.println("There are " + discontinued_prodcuts.size() + " discontinued products");
+
     ctx.close();
   }
 }
