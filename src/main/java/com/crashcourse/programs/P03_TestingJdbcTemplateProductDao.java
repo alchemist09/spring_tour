@@ -34,6 +34,9 @@ public class P03_TestingJdbcTemplateProductDao {
     List<Product> ordered_products = dao.getProductsOnOrder();
     System.out.println("The number of products that are on order is " + ordered_products.size());
 
+    List<Product> products_on_category = dao.getProductsInCategory(3);
+    System.out.println("There are " + products_on_category.size() + " in category 3");
+
     ctx.close();
   }
 }
