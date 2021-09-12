@@ -82,7 +82,8 @@ public class JdbcTemplateProductDao implements ProductDao {
   }
 
   public List<Product> getProductsOnOrder() throws DaoException {
-    return ProductDao.super.getProductsOnOrder();
+    String sql = "SELECT * FROM products WHERE units_on_order > 0";
+    return template.query(sql, productMapper);
   }
 
   public List<Product> getDiscontinuedProducts() throws DaoException {
