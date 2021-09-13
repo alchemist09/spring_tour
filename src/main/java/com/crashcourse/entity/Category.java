@@ -18,5 +18,5 @@ public class Category {
   private int category_id;
   private String category_name;
   private String description;
-  private byte[] pictture;
+  private byte[] picture;
 }
