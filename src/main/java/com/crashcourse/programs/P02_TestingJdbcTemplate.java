@@ -102,7 +102,7 @@ public class P02_TestingJdbcTemplate {
     String query = "SELECT * FROM categories";
     List<Category> cg_list = template.query(query, new CategoryMapper());
     for(Category cg : cg_list) {
-      System.out.println(cg.getCategory_name() + "    " + cg.getDescription() + "    " + cg.getPictture());
+      System.out.println(cg.getCategory_name() + "    " + cg.getDescription() + "    " + cg.getPicture());
     }
   }
 
