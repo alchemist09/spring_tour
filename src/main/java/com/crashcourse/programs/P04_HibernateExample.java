@@ -1,6 +1,9 @@
 package com.crashcourse.programs;
 
+import java.util.List;
 import java.util.Properties;
+
+import javax.persistence.TypedQuery;
 
 import com.crashcourse.entity.Category;
 
@@ -26,6 +29,15 @@ public class P04_HibernateExample {
 
     Category c1 = session.get(Category.class, 1);
     System.out.println(c1);
+
+    System.out.println("\r\n=================================");
+    String hql = "FROM Category";
+    TypedQuery<Category> query = session.createQuery(hql, Category.class);
+    List<Category> category_list = query.getResultList();
+
+    for(Category c : category_list) {
+      System.out.println(c);
+    }
 
     session.close();
     factory.close();
