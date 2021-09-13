@@ -23,5 +23,11 @@ public class P04_HibernateExample {
 
     SessionFactory factory = cfg.buildSessionFactory();
     Session session = factory.openSession();
+
+    Category c1 = session.get(Category.class, 1);
+    System.out.println(c1);
+
+    session.close();
+    factory.close();
   }
 }
