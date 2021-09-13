@@ -9,6 +9,7 @@ import com.crashcourse.entity.Category;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class P04_HibernateExample {
@@ -37,6 +38,23 @@ public class P04_HibernateExample {
 
     for(Category c : category_list) {
       System.out.println(c);
+    }
+
+    System.out.println("\r\n=================================");
+    Category c2 = new Category();
+    c2.setCategory_id(9);
+    c2.setCategory_name("Flowers");
+    c2.setDescription("Tulips, Roses, Lilys, Gerbera, Orchid, Dahlia");
+
+    Transaction tx = null;
+    try {
+      tx = session.beginTransaction();
+      session.persist(c2);
+      tx.commit();
+      System.out.println("Category added successfully!!");
+    } catch (Exception e) {
+      tx.rollback();
+      System.out.println("Error occured while trying to add cateogry to database");
     }
 
     session.close();
