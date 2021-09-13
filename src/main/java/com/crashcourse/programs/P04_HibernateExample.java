@@ -4,6 +4,8 @@ import java.util.Properties;
 
 import com.crashcourse.entity.Category;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class P04_HibernateExample {
@@ -17,5 +19,8 @@ public class P04_HibernateExample {
     Configuration cfg = new Configuration();
     cfg.setProperties(props);
     cfg.addAnnotatedClass(Category.class);
+
+    SessionFactory factory = cfg.buildSessionFactory();
+    Session session = factory.openSession();
   }
 }
