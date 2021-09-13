@@ -15,7 +15,7 @@ public class P04_HibernateExample {
     props.setProperty("hibernate.connection.url", "jdbc:h2:tcp://localhost/~/spring_app_db");
     props.setProperty("hibernate.connection.username", "sa");
     props.setProperty("hibernate.connection.password", "");
-    props.setProperty("hibernate.dialect", "org.hiberate.dialect.H2Dialect");
+    props.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
 
     Configuration cfg = new Configuration();
     cfg.setProperties(props);
