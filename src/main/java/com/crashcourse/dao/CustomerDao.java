@@ -1,5 +1,10 @@
 package com.crashcourse.dao;
 
+import com.crashcourse.entity.Customer;
+
 public interface CustomerDao {
-  
+  // CRUD OPERATIONS ON CUSTOMER ENTITY
+  public default void addCustomer(Customer custoemr) throws DaoException {
+    throw new DaoException("implemented in DAO class");
+  }
 }
