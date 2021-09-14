@@ -1,5 +1,7 @@
 package com.crashcourse.dao;
 
+import java.util.List;
+
 import com.crashcourse.entity.Customer;
 
 public interface CustomerDao {
@@ -18,5 +20,10 @@ public interface CustomerDao {
 
   public default void deleteCustomer(Integer customer_id) throws DaoException {
     throw new DaoException("implemented in DAO class");
+  }
+
+  // QUERIES
+  public default List<Customer> getAllCustomers() throws DaoException {
+    throw new DaoException();
   }
 }
