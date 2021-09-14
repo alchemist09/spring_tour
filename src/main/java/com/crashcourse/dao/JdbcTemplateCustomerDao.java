@@ -1,6 +1,7 @@
 package com.crashcourse.dao;
 
 import com.crashcourse.entity.Customer;
+import com.crashcourse.entity.CustomerMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,5 +26,11 @@ public class JdbcTemplateCustomerDao implements CustomerDao {
            sql += "region=?, postal_code=?, country=?, phone=?, fax=? WHERE customer_id = ?";
     template.update(sql, c.getCompany_name(), c.getContact_name(), c.getContact_title(), c.getAddress(), 
                          c.getCity(), c.getRegion(), c.getPostal_code(), c.getCountry(), c.getPhone(), c.getFax(), c.getCustomer_id());
+  }
+
+  @Override
+  public Customer getCustomer(Integer customer_id) throws DaoException {
+    String sql = "SELECT * FROM customers WHERE customer_id = ?";
+    return template.queryForObject(sql, new CustomerMapper(), customer_id);
   }
 }
