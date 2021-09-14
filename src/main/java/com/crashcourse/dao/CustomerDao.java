@@ -24,6 +24,10 @@ public interface CustomerDao {
 
   // QUERIES
   public default List<Customer> getAllCustomers() throws DaoException {
-    throw new DaoException();
+    throw new DaoException("implemented in DAO class");
+  }
+
+  public default List<Customer> getCustomersByCity(String city) throws DaoException {
+    throw new DaoException("implemented in DAO class");
   }
 }
