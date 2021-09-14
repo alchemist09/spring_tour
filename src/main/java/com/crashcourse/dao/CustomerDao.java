@@ -34,4 +34,8 @@ public interface CustomerDao {
   public default List<Customer> getCustomersByRegion(String region) throws DaoException {
     throw new DaoException("implemented in DAO class");
   }
+
+  public default List<Customer> getCustomersByPostalCode(String postal_code) throws DaoException {
+    throw new DaoException("implemented in DAO class");
+  }
 }
