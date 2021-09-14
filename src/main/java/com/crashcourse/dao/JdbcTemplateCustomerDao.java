@@ -53,4 +53,10 @@ public class JdbcTemplateCustomerDao implements CustomerDao {
     String sql = "SELECT * FROM customers WHERE city = ?";
     return template.query(sql, new CustomerMapper(), city);
   }
+
+  @Override
+  public List<Customer> getCustomersByRegion(String region) throws DaoException {
+    String sql = "SELECT * FROM customers WHERE region = ?";
+    return template.query(sql, new CustomerMapper(), region);
+  }
 }
