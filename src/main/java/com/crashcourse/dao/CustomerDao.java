@@ -11,4 +11,8 @@ public interface CustomerDao {
   public default void updateCustomer(Customer custoemr) throws DaoException {
     throw new DaoException("implemented in DAO class");
   }
+
+  public default void getCustomer(Integer customer_id) throws DaoException {
+    throw new DaoException("implemented in DAO class");
+  }
 }
