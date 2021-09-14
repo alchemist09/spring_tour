@@ -30,4 +30,8 @@ public interface CustomerDao {
   public default List<Customer> getCustomersByCity(String city) throws DaoException {
     throw new DaoException("implemented in DAO class");
   }
+
+  public default List<Customer> getCustomersByRegion(String region) throws DaoException {
+    throw new DaoException("implemented in DAO class");
+  }
 }
