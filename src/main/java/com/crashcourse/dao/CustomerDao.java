@@ -42,4 +42,8 @@ public interface CustomerDao {
   public default List<Customer> getCustomersByCountry(String country) throws DaoException {
     throw new DaoException("implemented in DAO class");
   }
+
+  public default List<Customer> getCustomersByContactTitle(String country) throws DaoException {
+    throw new DaoException("implemented in DAO class");
+  }
 }
