@@ -18,4 +18,12 @@ public class JdbcTemplateCustomerDao implements CustomerDao {
     template.update(sql, c.getCustomer_id(), c.getCompany_name(), c.getContact_name(), c.getContact_title(), c.getAddress(), 
                          c.getCity(), c.getRegion(), c.getPostal_code(), c.getCountry(), c.getPhone(), c.getFax());
   }
+
+  @Override
+  public void updateCustomer(Customer c) throws DaoException {
+    String sql = "UPDATE customers SET company_name=?, contact_name=?, contact_title=?, address=?, city=?, ";
+           sql += "region=?, postal_code=?, country=?, phone=?, fax=? WHERE customer_id = ?";
+    template.update(sql, c.getCompany_name(), c.getContact_name(), c.getContact_title(), c.getAddress(), 
+                         c.getCity(), c.getRegion(), c.getPostal_code(), c.getCountry(), c.getPhone(), c.getFax(), c.getCustomer_id());
+  }
 }
