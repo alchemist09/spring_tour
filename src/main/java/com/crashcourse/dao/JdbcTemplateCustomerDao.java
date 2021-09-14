@@ -1,5 +1,7 @@
 package com.crashcourse.dao;
 
+import java.util.List;
+
 import com.crashcourse.entity.Customer;
 import com.crashcourse.entity.CustomerMapper;
 
@@ -38,5 +40,11 @@ public class JdbcTemplateCustomerDao implements CustomerDao {
   public void deleteCustomer(Integer customer_id) throws DaoException {
     String sql = "DELETE FROM customers WHERE customer_id = ?";
     template.update(sql, customer_id);
+  }
+
+  @Override
+  public List<Customer> getAllCustomers() throws DaoException {
+    String sql = "SELECT * FROM customers";
+    return template.query(sql, new CustomerMapper());
   }
 }
