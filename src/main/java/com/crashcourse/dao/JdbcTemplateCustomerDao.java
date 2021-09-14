@@ -33,4 +33,10 @@ public class JdbcTemplateCustomerDao implements CustomerDao {
     String sql = "SELECT * FROM customers WHERE customer_id = ?";
     return template.queryForObject(sql, new CustomerMapper(), customer_id);
   }
+
+  @Override
+  public void deleteCustomer(Integer customer_id) throws DaoException {
+    String sql = "DELETE FROM customers WHERE customer_id = ?";
+    template.update(sql, customer_id);
+  }
 }
