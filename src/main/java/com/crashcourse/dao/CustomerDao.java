@@ -7,4 +7,8 @@ public interface CustomerDao {
   public default void addCustomer(Customer custoemr) throws DaoException {
     throw new DaoException("implemented in DAO class");
   }
+
+  public default void updateCustomer(Customer custoemr) throws DaoException {
+    throw new DaoException("implemented in DAO class");
+  }
 }
