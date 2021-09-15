@@ -62,6 +62,10 @@ public class P05_TestingJdbcTemplateCustomerDao {
     List<Customer> customers_country = dao.getCustomersByCountry("France");
     System.out.println("\r\nThere are " + customers_country.size() + " customers from France");
 
+    // retrieve customer by phone number
+    Customer cust = dao.getCustomerByPhoneNumber("(5) 555-4729");
+    System.out.println("\r\n" + cust);
+
     ctx.close();
   }
 }
