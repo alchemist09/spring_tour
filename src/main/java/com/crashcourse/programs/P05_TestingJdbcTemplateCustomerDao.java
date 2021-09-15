@@ -50,6 +50,10 @@ public class P05_TestingJdbcTemplateCustomerDao {
     List<Customer> customers = dao.getAllCustomers();
     System.out.println("\r\nThere are " + customers.size() + " customers in database");
 
+    // retrieve customers by city
+    List<Customer> customers_city = dao.getCustomersByCity("Sao Paulo");
+    System.out.println("\r\nThere are " + customers_city.size() + " customers from Sao Paulo");
+
     ctx.close();
   }
 }
