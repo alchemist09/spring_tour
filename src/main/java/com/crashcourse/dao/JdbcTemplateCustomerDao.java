@@ -37,7 +37,7 @@ public class JdbcTemplateCustomerDao implements CustomerDao {
   }
 
   @Override
-  public void deleteCustomer(Integer customer_id) throws DaoException {
+  public void deleteCustomer(String customer_id) throws DaoException {
     String sql = "DELETE FROM customers WHERE customer_id = ?";
     template.update(sql, customer_id);
   }
