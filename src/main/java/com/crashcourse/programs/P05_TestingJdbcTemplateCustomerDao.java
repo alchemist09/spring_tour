@@ -37,9 +37,12 @@ public class P05_TestingJdbcTemplateCustomerDao {
     c3.setPhone("49-163-2299");
     c3.setFax("1349-15388");
 
-    dao.addCustomer(c3);
-    System.out.println("\r\nAdded new customer to database");
+    // dao.addCustomer(c3);
+    // System.out.println("\r\nAdded new customer to database");
 
+    // deleting a customer
+    dao.deleteCustomer("XXXLL");
+    System.out.println("\r\nDeleted customer from database!!");
     ctx.close();
   }
 }
