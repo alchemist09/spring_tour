@@ -1,5 +1,7 @@
 package com.crashcourse.programs;
 
+import java.util.List;
+
 import com.crashcourse.cfg.AppConfig4;
 import com.crashcourse.dao.CustomerDao;
 import com.crashcourse.dao.DaoException;
@@ -41,8 +43,13 @@ public class P05_TestingJdbcTemplateCustomerDao {
     // System.out.println("\r\nAdded new customer to database");
 
     // deleting a customer
-    dao.deleteCustomer("XXXLL");
-    System.out.println("\r\nDeleted customer from database!!");
+    // dao.deleteCustomer("XXXLL");
+    // System.out.println("\r\nDeleted customer from database!!");
+
+    // retrieve all customers
+    List<Customer> customers = dao.getAllCustomers();
+    System.out.println("\r\nThere are " + customers.size() + " customers in database");
+
     ctx.close();
   }
 }
