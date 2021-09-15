@@ -16,6 +16,11 @@ public class P05_TestingJdbcTemplateCustomerDao {
     Customer c1 = dao.getCustomer("BSBEV");
     System.out.println(c1);
 
+    Customer c2 = dao.getCustomer("ALFKI");
+    c2.setRegion("BC");
+    dao.updateCustomer(c2);
+    System.out.println("Customer details updated");
+
     ctx.close();
   }
 }
