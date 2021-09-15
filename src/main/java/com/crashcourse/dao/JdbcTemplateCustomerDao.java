@@ -74,13 +74,13 @@ public class JdbcTemplateCustomerDao implements CustomerDao {
 
   @Override
   public List<Customer> getCustomersByContactTitle(String contact_title) throws DaoException {
-    String sql = "SELECT * FROM customers WHERE country = ?";
+    String sql = "SELECT * FROM customers WHERE contact_title = ?";
     return template.query(sql, new CustomerMapper(), contact_title);
   }
 
   @Override
   public Customer getCustomerByPhoneNumber(String phone_no) throws DaoException {
-    String sql = "SELECT * FROM customers WHERE country = ?";
+    String sql = "SELECT * FROM customers WHERE phone = ?";
     return template.queryForObject(sql, new CustomerMapper(), phone_no);
   }
 }
