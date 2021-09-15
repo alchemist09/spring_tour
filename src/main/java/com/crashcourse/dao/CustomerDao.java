@@ -14,7 +14,7 @@ public interface CustomerDao {
     throw new DaoException("implemented in DAO class");
   }
 
-  public default Customer getCustomer(Integer customer_id) throws DaoException {
+  public default Customer getCustomer(String customer_id) throws DaoException {
     throw new DaoException("implemented in DAO class");
   }
 

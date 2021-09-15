@@ -31,7 +31,7 @@ public class JdbcTemplateCustomerDao implements CustomerDao {
   }
 
   @Override
-  public Customer getCustomer(Integer customer_id) throws DaoException {
+  public Customer getCustomer(String customer_id) throws DaoException {
     String sql = "SELECT * FROM customers WHERE customer_id = ?";
     return template.queryForObject(sql, new CustomerMapper(), customer_id);
   }
