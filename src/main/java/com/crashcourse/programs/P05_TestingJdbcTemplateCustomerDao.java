@@ -66,6 +66,10 @@ public class P05_TestingJdbcTemplateCustomerDao {
     Customer cust = dao.getCustomerByPhoneNumber("(5) 555-4729");
     System.out.println("\r\n" + cust);
 
+    // retrieve customers by contact title
+    List<Customer> customers_contact_title = dao.getCustomersByContactTitle("Sales Representative");
+    System.out.println("\r\nThere are " + customers_contact_title.size() + " customers with a contact title of Sales Representative");
+
     ctx.close();
   }
 }
