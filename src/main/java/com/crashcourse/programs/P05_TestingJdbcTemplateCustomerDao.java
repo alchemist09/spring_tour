@@ -54,6 +54,10 @@ public class P05_TestingJdbcTemplateCustomerDao {
     List<Customer> customers_city = dao.getCustomersByCity("Sao Paulo");
     System.out.println("\r\nThere are " + customers_city.size() + " customers from Sao Paulo");
 
+    // retrieve customers by region
+    List<Customer> customers_region = dao.getCustomersByRegion("BC");
+    System.out.println("\r\nThere are " + customers_region.size() + " customers from BC");
+
     ctx.close();
   }
 }
