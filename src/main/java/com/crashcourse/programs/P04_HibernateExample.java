@@ -6,6 +6,7 @@ import java.util.Properties;
 import javax.persistence.TypedQuery;
 
 import com.crashcourse.entity.Category;
+import com.crashcourse.entity.Customer;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,6 +25,7 @@ public class P04_HibernateExample {
     Configuration cfg = new Configuration();
     cfg.setProperties(props);
     cfg.addAnnotatedClass(Category.class);
+    cfg.addAnnotatedClass(Customer.class);
 
     SessionFactory factory = cfg.buildSessionFactory();
     Session session = factory.openSession();
@@ -56,6 +58,10 @@ public class P04_HibernateExample {
       tx.rollback();
       System.out.println("Error occured while trying to add cateogry to database");
     }
+
+    System.out.println("\r\n============================ CUSTOMER ==============================");
+    Customer customer1 = session.get(Customer.class, "ALFKI");
+    System.out.println(customer1);
 
     session.close();
     factory.close();
