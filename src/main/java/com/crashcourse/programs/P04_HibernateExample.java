@@ -63,6 +63,17 @@ public class P04_HibernateExample {
     Customer customer1 = session.get(Customer.class, "ALFKI");
     System.out.println(customer1);
 
+    System.out.println("\r\n=====================================================================");
+    String hql2 = "FROM Customer WHERE country = 'Canada'";
+    TypedQuery<Customer> query2 = session.createQuery(hql2, Customer.class);
+    List<Customer> customer_list = query2.getResultList();
+
+    for(Customer cust : customer_list) {
+      String output = "Customer(" + cust.getCustomer_id() + ", " + cust.getCompany_name() + ", " + cust.getContact_name() + ", " + cust.getAddress();
+            output += ", " + cust.getCity() + ", " + cust.getCountry() + ")";
+      System.out.println(output);
+    }
+
     session.close();
     factory.close();
   }
