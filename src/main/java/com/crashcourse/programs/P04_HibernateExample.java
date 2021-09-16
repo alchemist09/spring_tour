@@ -64,8 +64,9 @@ public class P04_HibernateExample {
     System.out.println(customer1);
 
     System.out.println("\r\n=====================================================================");
-    String hql2 = "FROM Customer WHERE country = 'Canada'";
+    String hql2 = "FROM Customer WHERE country = :cn";
     TypedQuery<Customer> query2 = session.createQuery(hql2, Customer.class);
+    query2.setParameter("cn", "UK");
     List<Customer> customer_list = query2.getResultList();
 
     for(Customer cust : customer_list) {
