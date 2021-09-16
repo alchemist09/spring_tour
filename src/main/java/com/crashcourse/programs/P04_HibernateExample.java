@@ -75,6 +75,24 @@ public class P04_HibernateExample {
       System.out.println(output);
     }
 
+    System.out.println("\r\n=====================================================================");
+    Customer customer2 = session.get(Customer.class, "WOLZA");
+    customer2.setCountry("Russia");
+    customer2.setCity("Moscow");
+
+    Transaction tx2 = null;
+    try {
+      tx2 = session.beginTransaction();
+      session.persist(customer2);
+      tx.commit();
+      System.out.println("Customer details updated!");
+    } catch (Exception e) {
+      if(tx2 != null) {
+        tx.rollback();
+      }
+      System.out.println("An error occred while trying to update customer details");
+    }
+
     session.close();
     factory.close();
   }
