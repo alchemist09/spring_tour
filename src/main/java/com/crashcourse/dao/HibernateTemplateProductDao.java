@@ -75,8 +75,7 @@ public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
   public void updateProduct(Product product) throws DaoException {
-    // TODO Auto-generated method stub
-    ProductDao.super.updateProduct(product);
+    template.merge(product);
   }
   
 }
