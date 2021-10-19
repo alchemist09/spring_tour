@@ -45,8 +45,7 @@ public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
   public Product getProduct(Integer product_id) throws DaoException {
-    // TODO Auto-generated method stub
-    return ProductDao.super.getProduct(product_id);
+    return template.get(Product.class, product_id);
   }
 
   @Override
