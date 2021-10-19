@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.crashcourse.entity.Product;
 
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -34,8 +35,8 @@ public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
   public List<Product> getAllProducts() throws DaoException {
-    // TODO Auto-generated method stub
-    return ProductDao.super.getAllProducts();
+    DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
+    return (List<Product>)template.findByCriteria(dc);
   }
 
   @Override
