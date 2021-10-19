@@ -24,6 +24,9 @@ public class P07_TestingHibernateTemplateProductDao {
     product_list = dao.getDiscontinuedProducts();
     System.out.println("There are " + product_list.size() + " discontinued products");
 
+    long pc = dao.count();
+    System.out.println("There are " + pc + " products avaiable");
+
     ctx.close();
   }
 }
