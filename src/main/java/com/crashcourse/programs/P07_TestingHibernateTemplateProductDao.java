@@ -27,6 +27,9 @@ public class P07_TestingHibernateTemplateProductDao {
     long pc = dao.count();
     System.out.println("There are " + pc + " products avaiable");
 
+    Product p = dao.getProduct(1);
+    System.out.println(p.getProduct_name() + " -----> " + p.getUnit_price());
+
     ctx.close();
   }
 }
