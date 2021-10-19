@@ -10,6 +10,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository("htDao")
+@SuppressWarnings("unchecked")
 public class HibernateTemplateProductDao implements ProductDao {
 
   @Autowired(required = false)
