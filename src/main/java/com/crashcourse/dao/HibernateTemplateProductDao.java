@@ -27,8 +27,9 @@ public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
   public void deleteProduct(Integer product_id) throws DaoException {
-    // TODO Auto-generated method stub
-    ProductDao.super.deleteProduct(product_id);
+    Product p = getProduct(product_id);
+    p.setDiscontinued(1);
+    template.merge(p);
   }
 
   @Override
