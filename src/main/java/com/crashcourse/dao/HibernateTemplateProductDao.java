@@ -5,6 +5,7 @@ import java.util.List;
 import com.crashcourse.entity.Product;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -24,8 +25,9 @@ public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
   public long count() throws DaoException {
-    // TODO Auto-generated method stub
-    return ProductDao.super.count();
+    DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
+    dc.setProjection(Projections.rowCount());
+    return (long)template.findByCriteria(dc).get(0);
   }
 
   @Override
