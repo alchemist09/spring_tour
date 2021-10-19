@@ -69,8 +69,9 @@ public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
   public List<Product> getProductsNotInStock() throws DaoException {
-    // TODO Auto-generated method stub
-    return ProductDao.super.getProductsNotInStock();
+    DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
+    dc.add(Restrictions.eq("units_in_stock", 0));
+    return (List<Product>)template.findByCriteria(dc);
   }
 
   @Override
