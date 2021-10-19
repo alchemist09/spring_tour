@@ -55,8 +55,9 @@ public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
   public List<Product> getProductsByPriceRange(Double min_price, Double max_price) throws DaoException {
-    // TODO Auto-generated method stub
-    return ProductDao.super.getProductsByPriceRange(min_price, max_price);
+    DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
+    dc.add(Restrictions.between("unit_price", min_price, max_price));
+    return (List<Product>)template.findByCriteria(dc);
   }
 
   @Override
