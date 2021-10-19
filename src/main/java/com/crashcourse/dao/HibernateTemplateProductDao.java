@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.crashcourse.entity.Product;
 
+import org.springframework.stereotype.Repository;
+
+@Repository("htDao")
 public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
