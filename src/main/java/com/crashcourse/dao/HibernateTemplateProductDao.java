@@ -5,6 +5,7 @@ import java.util.List;
 import com.crashcourse.entity.Product;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -42,8 +43,9 @@ public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
   public List<Product> getDiscontinuedProducts() throws DaoException {
-    // TODO Auto-generated method stub
-    return ProductDao.super.getDiscontinuedProducts();
+    DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
+    dc.add(Restrictions.eq("discontinued", 1));
+    return (List<Product>)template.findByCriteria(dc);
   }
 
   @Override
