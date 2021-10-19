@@ -1,6 +1,12 @@
 package com.crashcourse.cfg;
 
+import java.util.Properties;
+
 import javax.sql.DataSource;
+
+import com.crashcourse.entity.Category;
+import com.crashcourse.entity.Product;
+import com.crashcourse.entity.Supplier;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,6 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @ComponentScan(basePackages = {"com.crashcourse.dao"})
 @Configuration
@@ -43,6 +50,22 @@ public class AppConfig4 {
   @Bean
   public JdbcTemplate jdbcTemplate(DataSource dataSource) {
     return new JdbcTemplate(dataSource);
+  }
+
+  @Bean
+  public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
+    LocalSessionFactoryBean lsfb = new LocalSessionFactoryBean();
+    lsfb.setDataSource(dataSource);
+    lsfb.setAnnotatedClasses(Category.class, Product.class, Supplier.class);
+
+    Properties props = new Properties();
+    props.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+    props.setProperty("hibernate.show_sql", "true");
+    props.setProperty("hibernate.format_sql", "true");
+
+    lsfb.setHibernateProperties(props);
+
+    return lsfb;
   }
  
  }
