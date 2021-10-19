@@ -76,8 +76,9 @@ public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
   public List<Product> getProductsOnOrder() throws DaoException {
-    // TODO Auto-generated method stub
-    return ProductDao.super.getProductsOnOrder();
+    DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
+    dc.add(Restrictions.gt("units_on_order", 0));
+    return (List<Product>)template.findByCriteria(dc);
   }
 
   @Override
