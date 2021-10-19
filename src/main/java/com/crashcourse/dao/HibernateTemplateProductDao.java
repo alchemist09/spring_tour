@@ -24,10 +24,8 @@ public class HibernateTemplateProductDao implements ProductDao {
   }
 
   @Override
-  public long count() throws DaoException {
-    DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
-    dc.setProjection(Projections.rowCount());
-    return (long)template.findByCriteria(dc).get(0);
+  public void updateProduct(Product product) throws DaoException {
+    template.merge(product);
   }
 
   @Override
@@ -35,6 +33,13 @@ public class HibernateTemplateProductDao implements ProductDao {
     Product p = getProduct(product_id);
     p.setDiscontinued(1);
     template.merge(p);
+  }
+
+  @Override
+  public long count() throws DaoException {
+    DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
+    dc.setProjection(Projections.rowCount());
+    return (long)template.findByCriteria(dc).get(0);
   }
 
   @Override
@@ -81,11 +86,6 @@ public class HibernateTemplateProductDao implements ProductDao {
     DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
     dc.add(Restrictions.gt("units_on_order", 0));
     return (List<Product>)template.findByCriteria(dc);
-  }
-
-  @Override
-  public void updateProduct(Product product) throws DaoException {
-    template.merge(product);
   }
   
 }
