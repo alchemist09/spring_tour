@@ -62,8 +62,9 @@ public class HibernateTemplateProductDao implements ProductDao {
 
   @Override
   public List<Product> getProductsInCategory(Integer category_id) throws DaoException {
-    // TODO Auto-generated method stub
-    return ProductDao.super.getProductsInCategory(category_id);
+    DetachedCriteria dc = DetachedCriteria.forClass(Product.class);
+    dc.add(Restrictions.eq("category_id", category_id));
+    return (List<Product>)template.findByCriteria(dc);
   }
 
   @Override
