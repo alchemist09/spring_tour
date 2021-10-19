@@ -9,12 +9,14 @@ import com.crashcourse.entity.Product;
 import com.crashcourse.entity.Supplier;
 
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @ComponentScan(basePackages = {"com.crashcourse.dao"})
@@ -66,6 +68,11 @@ public class AppConfig4 {
     lsfb.setHibernateProperties(props);
 
     return lsfb;
+  }
+
+  @Bean
+  public HibernateTemplate hibernateTemplate(SessionFactory sessionFactory) {
+    return new HibernateTemplate(sessionFactory);
   }
  
  }
