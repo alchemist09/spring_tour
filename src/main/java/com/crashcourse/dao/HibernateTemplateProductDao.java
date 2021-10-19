@@ -4,10 +4,15 @@ import java.util.List;
 
 import com.crashcourse.entity.Product;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository("htDao")
 public class HibernateTemplateProductDao implements ProductDao {
+
+  @Autowired(required = false)
+  private HibernateTemplate template;
 
   @Override
   public void addProduct(Product product) throws DaoException {
