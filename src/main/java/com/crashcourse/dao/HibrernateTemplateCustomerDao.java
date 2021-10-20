@@ -35,8 +35,7 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
 
   @Override
   public Customer getCustomer(String customer_id) throws DaoException {
-    // TODO Auto-generated method stub
-    return CustomerDao.super.getCustomer(customer_id);
+    return template.get(Customer.class, customer_id);
   }
 
   @Override
