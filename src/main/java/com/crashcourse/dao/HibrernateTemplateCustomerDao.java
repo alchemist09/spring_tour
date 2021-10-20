@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.crashcourse.entity.Customer;
 
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -27,8 +28,8 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
 
   @Override
   public List<Customer> getAllCustomers() throws DaoException {
-    // TODO Auto-generated method stub
-    return CustomerDao.super.getAllCustomers();
+    DetachedCriteria dc = DetachedCriteria.forClass(Customer.class);
+    return (List<Customer>)template.findByCriteria(dc);
   }
 
   @Override
