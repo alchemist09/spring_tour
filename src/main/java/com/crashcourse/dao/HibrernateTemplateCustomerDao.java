@@ -10,6 +10,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository("htCustDao")
+@SuppressWarnings("unchecked")
 public class HibrernateTemplateCustomerDao implements CustomerDao {
 
   @Autowired(required = false)
