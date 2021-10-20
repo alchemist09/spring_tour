@@ -21,8 +21,8 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
 
   @Override
   public void deleteCustomer(String customer_id) throws DaoException {
-    // TODO Auto-generated method stub
-    CustomerDao.super.deleteCustomer(customer_id);
+    Customer c = template.get(Customer.class, customer_id);
+    template.delete(c);
   }
 
   @Override
