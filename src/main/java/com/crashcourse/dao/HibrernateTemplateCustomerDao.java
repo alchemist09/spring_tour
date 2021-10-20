@@ -15,9 +15,8 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
   private HibernateTemplate template;
 
   @Override
-  public void addCustomer(Customer custoemr) throws DaoException {
-    // TODO Auto-generated method stub
-    CustomerDao.super.addCustomer(custoemr);
+  public void addCustomer(Customer customer) throws DaoException {
+    template.persist(customer);
   }
 
   @Override
