@@ -4,10 +4,15 @@ import java.util.List;
 
 import com.crashcourse.entity.Customer;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository("htCustDao")
 public class HibrernateTemplateCustomerDao implements CustomerDao {
+
+  @Autowired(required = false)
+  private HibernateTemplate template;
 
   @Override
   public void addCustomer(Customer custoemr) throws DaoException {
