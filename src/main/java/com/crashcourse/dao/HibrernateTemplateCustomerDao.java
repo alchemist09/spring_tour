@@ -74,9 +74,8 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
   }
 
   @Override
-  public void updateCustomer(Customer custoemr) throws DaoException {
-    // TODO Auto-generated method stub
-    CustomerDao.super.updateCustomer(custoemr);
+  public void updateCustomer(Customer customer) throws DaoException {
+    template.merge(customer);
   }
 
   
