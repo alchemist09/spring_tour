@@ -5,6 +5,7 @@ import java.util.List;
 import com.crashcourse.entity.Customer;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -57,8 +58,9 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
 
   @Override
   public List<Customer> getCustomersByCountry(String country) throws DaoException {
-    // TODO Auto-generated method stub
-    return CustomerDao.super.getCustomersByCountry(country);
+    DetachedCriteria dc = DetachedCriteria.forClass(Customer.class);
+    dc.add(Restrictions.eq("country", country));
+    return (List<Customer>)template.findByCriteria(dc);
   }
 
   @Override
