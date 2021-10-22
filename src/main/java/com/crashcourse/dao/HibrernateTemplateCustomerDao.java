@@ -53,6 +53,7 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
   @Override
   public List<Customer> getCustomersByContactTitle(String title) throws DaoException {
     DetachedCriteria dc = DetachedCriteria.forClass(Customer.class);
+    dc.add(Restrictions.eq("contact_title", title));
     return (List<Customer>)template.findByCriteria(dc);
   }
 
