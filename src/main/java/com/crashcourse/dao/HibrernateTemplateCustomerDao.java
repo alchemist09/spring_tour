@@ -50,9 +50,9 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
   }
 
   @Override
-  public List<Customer> getCustomersByContactTitle(String country) throws DaoException {
+  public List<Customer> getCustomersByContactTitle(String title) throws DaoException {
     // TODO Auto-generated method stub
-    return CustomerDao.super.getCustomersByContactTitle(country);
+    return CustomerDao.super.getCustomersByContactTitle(title);
   }
 
   @Override

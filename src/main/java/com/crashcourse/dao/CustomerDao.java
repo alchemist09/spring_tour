@@ -43,7 +43,7 @@ public interface CustomerDao {
     throw new DaoException("implemented in DAO class");
   }
 
-  public default List<Customer> getCustomersByContactTitle(String country) throws DaoException {
+  public default List<Customer> getCustomersByContactTitle(String title) throws DaoException {
     throw new DaoException("implemented in DAO class");
   }
 
