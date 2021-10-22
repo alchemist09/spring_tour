@@ -51,8 +51,8 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
 
   @Override
   public List<Customer> getCustomersByContactTitle(String title) throws DaoException {
-    // TODO Auto-generated method stub
-    return CustomerDao.super.getCustomersByContactTitle(title);
+    DetachedCriteria dc = DetachedCriteria.forClass(Customer.class);
+    return (List<Customer>)template.findByCriteria(dc);
   }
 
   @Override
