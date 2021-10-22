@@ -67,8 +67,9 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
 
   @Override
   public List<Customer> getCustomersByPostalCode(String postal_code) throws DaoException {
-    // TODO Auto-generated method stub
-    return CustomerDao.super.getCustomersByPostalCode(postal_code);
+    DetachedCriteria dc = DetachedCriteria.forClass(Customer.class);
+    dc.add(Restrictions.eq("postal_code", postal_code));
+    return (List<Customer>)template.findByCriteria(dc);
   }
 
   @Override
