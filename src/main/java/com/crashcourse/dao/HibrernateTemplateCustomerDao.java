@@ -23,6 +23,11 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
   }
 
   @Override
+  public void updateCustomer(Customer customer) throws DaoException {
+    template.merge(customer);
+  }
+
+  @Override
   public void deleteCustomer(String customer_id) throws DaoException {
     Customer c = template.get(Customer.class, customer_id);
     template.delete(c);
@@ -78,12 +83,5 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
     dc.add(Restrictions.eq("region", region));
     return (List<Customer>)template.findByCriteria(dc);
   }
-
-  @Override
-  public void updateCustomer(Customer customer) throws DaoException {
-    template.merge(customer);
-  }
-
-  
 }
 
