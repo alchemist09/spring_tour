@@ -74,8 +74,9 @@ public class HibrernateTemplateCustomerDao implements CustomerDao {
 
   @Override
   public List<Customer> getCustomersByRegion(String region) throws DaoException {
-    // TODO Auto-generated method stub
-    return CustomerDao.super.getCustomersByRegion(region);
+    DetachedCriteria dc = DetachedCriteria.forClass(Customer.class);
+    dc.add(Restrictions.eq("region", region));
+    return (List<Customer>)template.findByCriteria(dc);
   }
 
   @Override
