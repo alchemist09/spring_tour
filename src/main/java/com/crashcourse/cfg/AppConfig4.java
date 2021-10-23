@@ -5,6 +5,7 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import com.crashcourse.entity.Category;
+import com.crashcourse.entity.Customer;
 import com.crashcourse.entity.Product;
 import com.crashcourse.entity.Supplier;
 
@@ -58,7 +59,7 @@ public class AppConfig4 {
   public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
     LocalSessionFactoryBean lsfb = new LocalSessionFactoryBean();
     lsfb.setDataSource(dataSource);
-    lsfb.setAnnotatedClasses(Category.class, Product.class, Supplier.class);
+    lsfb.setAnnotatedClasses(Category.class, Product.class, Supplier.class, Customer.class);
 
     Properties props = new Properties();
     props.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
