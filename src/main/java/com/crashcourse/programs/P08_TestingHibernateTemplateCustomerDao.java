@@ -20,6 +20,10 @@ public class P08_TestingHibernateTemplateCustomerDao {
     Customer c1 = dao.getCustomer("BOTTM");
     System.out.println(c1);
 
+    String country = "Canada";
+    customer_list  = dao.getCustomersByCountry(country);
+    System.out.println("There are " + customer_list.size() + " customers from " + country);
+
     ctx.close();
   }
 }
