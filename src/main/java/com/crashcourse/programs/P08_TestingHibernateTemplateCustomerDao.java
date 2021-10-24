@@ -17,6 +17,8 @@ public class P08_TestingHibernateTemplateCustomerDao {
     List<Customer> customer_list = dao.getAllCustomers();
     System.out.println("There are " + customer_list.size() + " customers in database");
 
+    Customer c1 = dao.getCustomer("BOTTM");
+    System.out.println(c1);
 
     ctx.close();
   }
