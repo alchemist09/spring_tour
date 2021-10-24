@@ -63,7 +63,7 @@ public class AppConfig4 {
 
     Properties props = new Properties();
     props.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-    props.setProperty("hibernate.show_sql", "true");
+    // props.setProperty("hibernate.show_sql", "true");
     props.setProperty("hibernate.format_sql", "true");
 
     lsfb.setHibernateProperties(props);
