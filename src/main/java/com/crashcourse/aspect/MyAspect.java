@@ -11,8 +11,8 @@ public class MyAspect {
     System.out.println("My Aspect instantitated!!!");
   }
 
-  @Before("execution(* com.crashcourse.dao.ProductDao.count())")
+  @Before("execution(* com.crashcourse.dao.ProductDao.get*(..))")
   public void logBefore() {
-    System.out.println("Logging before target method execution");
+    System.out.println("\r\nLogging before target method execution");
   }
 }
