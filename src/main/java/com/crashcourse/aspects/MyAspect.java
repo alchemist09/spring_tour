@@ -1,4 +1,4 @@
-package com.crashcourse.aspect;
+package com.crashcourse.aspects;
 
 import java.util.Arrays;
 
