@@ -14,6 +14,7 @@ public class P07_TestingHibernateTemplateProductDao {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class);
 
     ProductDao dao = ctx.getBean("htDao", ProductDao.class);
+    System.out.println("dao is an instance of " + dao.getClass().getName());
     List<Product> product_list = dao.getAllProducts();
     System.out.println("There are " + product_list.size() + " products in the database");
 
