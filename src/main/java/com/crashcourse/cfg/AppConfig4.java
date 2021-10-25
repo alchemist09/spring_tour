@@ -20,7 +20,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
-@ComponentScan(basePackages = {"com.crashcourse.dao"})
+@ComponentScan(basePackages = {"com.crashcourse.dao", "com.crashcourse.aspect"})
 @Configuration
 @PropertySource("classpath:jdbc.properties")
 public class AppConfig4 {
