@@ -22,7 +22,7 @@ import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = {"com.crashcourse.dao", "com.crashcourse.aspect"})
+@ComponentScan(basePackages = {"com.crashcourse.dao", "com.crashcourse.aspects"})
 @Configuration
 @PropertySource("classpath:jdbc.properties")
 public class AppConfig4 {
