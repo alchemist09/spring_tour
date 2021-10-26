@@ -2,8 +2,11 @@ package com.crashcourse.aspects;
 
 import java.util.Arrays;
 
+import com.crashcourse.dao.DaoException;
+
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -34,5 +37,10 @@ public class MyAspect {
     }
 
     return pjp.proceed(args);
+  }
+
+  @AfterThrowing(throwing = "t", pointcut="execution(* com.crashcourse.dao..*Dao.*(..))")
+  public void convertToDaoException(Throwable t) throws DaoException {
+    throw new DaoException(t);
   }
 }
