@@ -36,6 +36,17 @@ public class P07_TestingHibernateTemplateProductDao {
     Product p = dao.getProduct(1);
     System.out.println(p.getProduct_name() + " -----> " + p.getUnit_price());
 
+    try {
+      p.setUnit_price(p.getUnit_price() + 1);
+      dao.updateProduct(p);
+      System.out.println("new product price is " + p.getUnit_price());
+    } catch (DaoException e) {
+      System.out.println("\r\nAn error occured while trying to update product details: " + e.getMessage());
+    }
+
+    System.out.println("\r\nProgram execution continues before exiting");
+    
+
     ctx.close();
   }
 }
