@@ -22,6 +22,11 @@ public class P07_TestingHibernateTemplateProductDao {
     product_list = dao.getProductsByPriceRange(min_price, max_price);
     System.out.println("There are " + product_list.size() + " products between $" + min_price + " and $" + max_price);
 
+    min_price = 200.0;
+    max_price = 50.0;
+    product_list = dao.getProductsByPriceRange(min_price, max_price);
+    System.out.println("There are " + product_list.size() + " products between $" + min_price + " and $" + max_price);
+
     product_list = dao.getDiscontinuedProducts();
     System.out.println("There are " + product_list.size() + " discontinued products");
 
