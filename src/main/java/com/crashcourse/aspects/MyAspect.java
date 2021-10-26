@@ -23,7 +23,7 @@ public class MyAspect {
   }
 
   @Around("execution(* com.crashcourse.dao.ProductDao.get*(Double, Double))")
-  public Object swapInputs(ProceedingJoinPoint pjp) {
+  public Object swapInputs(ProceedingJoinPoint pjp) throws Throwable {
     Object[] args = pjp.getArgs();
 
     Double min = (Double)args[0];
