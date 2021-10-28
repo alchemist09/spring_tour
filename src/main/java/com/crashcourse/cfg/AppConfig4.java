@@ -19,6 +19,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 @EnableAspectJAutoProxy
@@ -76,6 +77,11 @@ public class AppConfig4 {
   @Bean
   public HibernateTemplate hibernateTemplate(SessionFactory sessionFactory) {
     return new HibernateTemplate(sessionFactory);
+  }
+
+  @Bean
+  public HibernateTransactionManager txManager(SessionFactory sessionFactory) {
+    return new HibernateTransactionManager(sessionFactory);
   }
  
  }
