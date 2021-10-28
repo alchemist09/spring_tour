@@ -9,10 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = {DaoException.class}, readOnly = true)
 public interface ProductDao {
   // CRUD OPERATIONS
+  @Transactional(readOnly = false)
   public default void addProduct(Product product) throws DaoException {
     throw new DaoException("Method not implemented");
   }
 
+  @Transactional(readOnly = false)
   public default void updateProduct(Product product) throws DaoException {
     throw new DaoException("Method not implemented");
   }
@@ -21,6 +23,7 @@ public interface ProductDao {
     throw new DaoException("Method not implemented");
   }
 
+  @Transactional(readOnly = false)
   public default void deleteProduct(Integer product_id) throws DaoException {
     throw new DaoException("Method not implemented");
   }
