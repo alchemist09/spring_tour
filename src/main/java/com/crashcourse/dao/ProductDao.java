@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.crashcourse.entity.Product;
 
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional(rollbackFor = {DaoException.class}, readOnly = true)
 public interface ProductDao {
   // CRUD OPERATIONS
   public default void addProduct(Product product) throws DaoException {
