@@ -9,7 +9,7 @@ import com.crashcourse.entity.Customer;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class P08_TestingHibernateTemplateCustomerDao {
+public class P07_TestingHibernateTemplateCustomerDao {
   public static void main(String[] args) throws DaoException {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class);
 

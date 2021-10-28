@@ -9,7 +9,7 @@ import com.crashcourse.entity.Product;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class P07_TestingHibernateTemplateProductDao {
+public class P06_TestingHibernateTemplateProductDao {
   public static void main(String[] args) throws DaoException {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig4.class);
 
