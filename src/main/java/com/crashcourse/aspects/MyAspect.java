@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyAspect {
   public MyAspect() {
-    System.out.println("My Aspect instantitated!!!");
+    
   }
 
   @Before("execution(* com.crashcourse.dao.ProductDao.get*(..))")
